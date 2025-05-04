@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>CraqForge.Core</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Thiago Gabriel Moreira Freitas</Authors>
+		<Company>CraqForge</Company>
+		<PackageDescription>Shared utilities for CraqForge ecosystem.</PackageDescription>
+		<PackageTags>craqforge;core;utilities;helpers;file-management;validation;identifiers;shared</PackageTags>
+		<RepositoryUrl>https://github.com/tmoreirafreitas/CraqForge</RepositoryUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="CraqForge.Core.Tests"/>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CraqForge.Core.Abstractions\CraqForge.Core.Abstractions.csproj" />
+	</ItemGroup>
+</Project>
