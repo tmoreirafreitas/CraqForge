@@ -1,4 +1,4 @@
-﻿namespace CraqForge.Core.FileManagement.Models
+﻿namespace CraqForge.Core.Abstractions.FileManagement.Models
 {
     /// <summary>
     /// Representa o conteúdo básico de um arquivo, contendo metadados essenciais e os dados binários.

@@ -1,4 +1,4 @@
-﻿namespace CraqForge.Core.FileManagement.Models
+﻿namespace CraqForge.Core.Abstractions.FileManagement.Models
 {
     public record DataTable
     {

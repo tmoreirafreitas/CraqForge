@@ -6,15 +6,13 @@ namespace CraqForge.Core.Tests
 {
     public class DocumentFormatValidatorTests
     {
-        private readonly DocumentFormatValidator _documentFormatValidator = new();
-
         [Fact]
         public void IsPdf_ShouldReturnTrueForValidPdf()
         {
             // Criando um PDF simples com a assinatura "%PDF-"
             var pdfBytes = Encoding.ASCII.GetBytes("%PDF-12345");
 
-            var result = _documentFormatValidator.IsPdf(pdfBytes);
+            var result = DocumentFormatValidator.IsPdf(pdfBytes);
 
             Assert.True(result);
         }
@@ -25,7 +23,7 @@ namespace CraqForge.Core.Tests
             // Criando um arquivo com bytes que não correspondem à assinatura de PDF
             var invalidPdfBytes = Encoding.ASCII.GetBytes("Not a PDF file");
 
-            var result = _documentFormatValidator.IsPdf(invalidPdfBytes);
+            var result = DocumentFormatValidator.IsPdf(invalidPdfBytes);
 
             Assert.False(result);
         }
@@ -35,7 +33,7 @@ namespace CraqForge.Core.Tests
         {
             byte[] nullBytes = null;
 
-            var result = _documentFormatValidator.IsPdf(nullBytes);
+            var result = DocumentFormatValidator.IsPdf(nullBytes);
 
             Assert.False(result);
         }
@@ -45,7 +43,7 @@ namespace CraqForge.Core.Tests
         {
             var emptyBytes = new byte[0];
 
-            var result = _documentFormatValidator.IsPdf(emptyBytes);
+            var result = DocumentFormatValidator.IsPdf(emptyBytes);
 
             Assert.False(result);
         }
@@ -55,8 +53,8 @@ namespace CraqForge.Core.Tests
         {
             // Criando um arquivo DOCX válido
             var docxBytes = CreateValidDocxFile();
-
-            var result = _documentFormatValidator.IsDocx(docxBytes);
+            using var ms = new MemoryStream(docxBytes);
+            var result = DocumentFormatValidator.IsDocx(ms);
 
             Assert.True(result);
         }
@@ -66,8 +64,8 @@ namespace CraqForge.Core.Tests
         {
             // Criando um arquivo com bytes inválidos
             var invalidDocxBytes = Encoding.ASCII.GetBytes("Invalid DOCX content");
-
-            var result = _documentFormatValidator.IsDocx(invalidDocxBytes);
+            using var ms = new MemoryStream(invalidDocxBytes);
+            var result = DocumentFormatValidator.IsDocx(ms);
 
             Assert.False(result);
         }
@@ -76,8 +74,8 @@ namespace CraqForge.Core.Tests
         public void IsDocx_ShouldReturnFalseForNullBytes()
         {
             byte[] nullBytes = null;
-
-            var result = _documentFormatValidator.IsDocx(nullBytes);
+            using var ms = new MemoryStream(nullBytes);
+            var result = DocumentFormatValidator.IsDocx(ms);
 
             Assert.False(result);
         }
@@ -86,8 +84,8 @@ namespace CraqForge.Core.Tests
         public void IsDocx_ShouldReturnFalseForEmptyBytes()
         {
             var emptyBytes = new byte[0];
-
-            var result = _documentFormatValidator.IsDocx(emptyBytes);
+            using var ms = new MemoryStream(emptyBytes);
+            var result = DocumentFormatValidator.IsDocx(ms);
 
             Assert.False(result);
         }

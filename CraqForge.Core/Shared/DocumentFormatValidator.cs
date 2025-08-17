@@ -1,28 +1,23 @@
-﻿using CraqForge.Core.Abstractions.Validations;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using System.Text;
 
 namespace CraqForge.Core.Shared
 {
-    internal sealed class DocumentFormatValidator : IDocumentFormatValidator
+    public static class DocumentFormatValidator
     {
         private const string PdfSignature = "%PDF-";
 
-        public bool IsPdf(byte[] pdfBytes)
+        public static bool IsPdf(byte[] bytes)
         {
-            if (pdfBytes == null || pdfBytes.Length < PdfSignature.Length)
+            if (bytes == null || bytes.Length < PdfSignature.Length)
                 return false;
 
-            var header = Encoding.ASCII.GetString(pdfBytes, 0, PdfSignature.Length);
+            var header = Encoding.ASCII.GetString(bytes, 0, PdfSignature.Length);
             return header.StartsWith(PdfSignature, StringComparison.Ordinal);
         }
 
-        public bool IsDocx(byte[] docxBytes)
+        public static bool IsDocx(Stream stream)
         {
-            if(docxBytes == null || docxBytes.Length == 0) 
-                return false;
-
-            var stream = new MemoryStream(docxBytes);
             if (stream == null || !stream.CanRead)
                 return false;
 

@@ -1,49 +1,53 @@
 ﻿namespace CraqForge.Core.Abstractions.FileManagement
 {
     /// <summary>
-    /// Interface responsável por operações de manipulação de arquivos no sistema de arquivos.
-    /// Fornece métodos para download, criação de pastas, geração de nomes temporários e armazenamento de arquivos.
+    /// Define operações de manipulação de arquivos no sistema de arquivos.
+    /// Fornece métodos para download, criação de diretórios, geração de nomes temporários e persistência de arquivos.
     /// </summary>
     public interface IFileManagementSystem
     {
         /// <summary>
-        /// Baixa um arquivo a partir do caminho fornecido.
-        /// O conteúdo do arquivo é retornado como um array de bytes, permitindo que o consumidor defina a estrutura de retorno, se necessário.
+        /// Lê o conteúdo de um arquivo existente a partir do caminho informado.
+        /// O conteúdo é retornado como um array de bytes.
         /// </summary>
-        /// <param name="filePathName">Caminho completo do arquivo a ser baixado.</param>
-        /// <param name="cancellationToken">Token de cancelamento opcional para cancelar a operação.</param>
+        /// <param name="filePathName">Caminho completo do arquivo a ser lido.</param>
+        /// <param name="cancellationToken">Token opcional para cancelamento da operação.</param>
         /// <returns>O conteúdo do arquivo como array de bytes.</returns>
-        /// <exception cref="ArgumentException">Lançado quando o caminho do arquivo está vazio ou nulo.</exception>
-        /// <exception cref="FileNotFoundException">Lançado quando o arquivo não é encontrado no caminho fornecido.</exception>
-        /// <exception cref="Exception">Lançado quando ocorre um erro ao tentar baixar o arquivo.</exception>
+        /// <exception cref="ArgumentException">Lançado quando o caminho fornecido é uma string vazia ou contém apenas espaços em branco.</exception>
+        /// <exception cref="ArgumentNullException">Lançado quando o caminho do arquivo é nulo.</exception>
+        /// <exception cref="FileNotFoundException">Lançado quando o arquivo não é encontrado no caminho informado.</exception>
+        /// <exception cref="Exception">Lançado quando ocorre um erro inesperado durante a leitura do arquivo.</exception>
         Task<byte[]> DownloadAsync(string filePathName, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Cria uma pasta no sistema de arquivos, caso ela ainda não exista.
+        /// Cria um diretório no sistema de arquivos, caso ele ainda não exista.
         /// </summary>
-        /// <param name="folderName">Nome da pasta a ser criada.</param>
-        /// <returns>O caminho completo da pasta criada.</returns>
-        /// <exception cref="ArgumentException">Lançado quando o nome da pasta é inválido ou vazio.</exception>
-        /// <exception cref="Exception">Lançado quando ocorre um erro ao criar a pasta.</exception>
+        /// <param name="folderName">Caminho completo do diretório a ser criado.</param>
+        /// <returns>O caminho completo do diretório existente ou recém-criado.</returns>
+        /// <exception cref="ArgumentException">Lançado quando o nome do diretório é inválido ou vazio.</exception>
+        /// <exception cref="Exception">Lançado quando ocorre um erro inesperado ao criar o diretório.</exception>
         string CreateFolder(string folderName);
 
         /// <summary>
-        /// Gera um nome único para um arquivo temporário.
-        /// O nome é baseado em um GUID e no diretório temporário especificado.
+        /// Gera um nome único para um arquivo temporário dentro de um diretório especificado.
+        /// O nome do arquivo é baseado em um GUID.
         /// </summary>
-        /// <param name="tempPath">Caminho do diretório temporário onde o arquivo será criado.</param>
-        /// <returns>O nome completo do arquivo temporário gerado.</returns>
+        /// <param name="tempPath">Caminho do diretório temporário onde o arquivo será gerado.</param>
+        /// <returns>O caminho completo do arquivo temporário gerado.</returns>
         /// <exception cref="ArgumentException">Lançado quando o caminho do diretório é inválido ou vazio.</exception>
-        /// <exception cref="Exception">Lançado quando ocorre um erro ao gerar o nome do arquivo.</exception>
+        /// <exception cref="Exception">Lançado quando ocorre um erro inesperado ao gerar o nome do arquivo.</exception>
         string NewTempFileName(string tempPath);
 
         /// <summary>
-        /// Salva um arquivo no sistema de arquivos a partir de um array de bytes.
+        /// Persiste um arquivo no sistema de arquivos a partir de um array de bytes.
+        /// Se o diretório do caminho fornecido não existir, ele será criado automaticamente.
         /// </summary>
-        /// <param name="fileBytes">Conteúdo do arquivo como array de bytes.</param>
+        /// <param name="fileBytes">Conteúdo do arquivo em formato de array de bytes.</param>
         /// <param name="filePath">Caminho completo onde o arquivo será salvo.</param>
-        /// <exception cref="ArgumentException">Lançado quando o conteúdo do arquivo está vazio.</exception>
-        /// <exception cref="Exception">Lançado quando ocorre um erro ao salvar o arquivo.</exception>
-        Task SaveFileAsync(byte[] fileBytes, string filePath);
+        /// <param name="cancellationToken">Token opcional para cancelamento da operação.</param>
+        /// <exception cref="ArgumentNullException">Lançado quando o array de bytes é nulo.</exception>
+        /// <exception cref="ArgumentException">Lançado quando o array de bytes está vazio.</exception>
+        /// <exception cref="Exception">Lançado quando ocorre um erro inesperado ao salvar o arquivo.</exception>
+        Task SaveFileAsync(byte[] fileBytes, string filePath, CancellationToken cancellationToken = default);
     }
 }

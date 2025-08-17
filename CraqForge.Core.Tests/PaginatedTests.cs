@@ -14,7 +14,7 @@ namespace CraqForge.Core.Tests
             int pageSize = 5;
 
             // Act
-            var paginated = new Paginated<string>(items, totalCount, page, pageSize);
+            var paginated = Paginated<string>.Create(items, totalCount, page, pageSize);
 
             // Assert
             Assert.Equal(items, paginated.Items);
@@ -30,7 +30,7 @@ namespace CraqForge.Core.Tests
         public void TotalPages_ShouldCalculateCorrectly()
         {
             // Act
-            var paginated = new Paginated<int>([], totalCount: 23, page: 1, pageSize: 10);
+            var paginated = Paginated<int>.Create([], totalCount: 23, page: 1, pageSize: 10);
 
             // Assert
             Assert.Equal(3, paginated.TotalPages);
@@ -41,7 +41,7 @@ namespace CraqForge.Core.Tests
         [InlineData(2, 10, true)]
         public void HasPrevious_ShouldReturnExpectedValue(int page, int totalCount, bool expected)
         {
-            var paginated = new Paginated<string>([], totalCount, page, 5);
+            var paginated = Paginated<string>.Create([], totalCount, page, 5);
             Assert.Equal(expected, paginated.HasPrevious);
         }
 
@@ -50,7 +50,7 @@ namespace CraqForge.Core.Tests
         [InlineData(4, 20, false)]
         public void HasNext_ShouldReturnExpectedValue(int page, int totalCount, bool expected)
         {
-            var paginated = new Paginated<string>([], totalCount, page, 5);
+            var paginated = Paginated<string>.Create([], totalCount, page, 5);
             Assert.Equal(expected, paginated.HasNext);
         }
 

@@ -1,4 +1,4 @@
-﻿namespace CraqForge.Core.FileManagement.Results
+﻿namespace CraqForge.Core.Abstractions.FileManagement.Results
 {
     /// <summary>
     /// Representa as informações extraídas de um documento do tipo DOCX.

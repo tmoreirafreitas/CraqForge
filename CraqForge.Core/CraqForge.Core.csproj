@@ -15,12 +15,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
-	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.8" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="CraqForge.Core.Tests"/>
+		<InternalsVisibleTo Include="CraqForge.Core.Tests" />
 	</ItemGroup>
 
 	<ItemGroup>
