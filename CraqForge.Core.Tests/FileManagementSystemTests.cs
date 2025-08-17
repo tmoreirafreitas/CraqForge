@@ -121,7 +121,7 @@ namespace CraqForge.Core.Tests
         }
 
         // Classe de teste para a implementação abstrata
-        private class FileManagementSystemFake(ILoggerFactory loggerFactory) : FileManagementSystem(loggerFactory)
+        private class FileManagementSystemFake(ILoggerFactory loggerFactory) : FileManagementSystem(loggerFactory.CreateLogger<FileManagementSystem>())
         {
         }
     }

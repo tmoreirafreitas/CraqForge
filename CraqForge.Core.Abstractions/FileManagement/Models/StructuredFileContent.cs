@@ -1,4 +1,4 @@
-﻿namespace CraqForge.Core.FileManagement.Models
+﻿namespace CraqForge.Core.Abstractions.FileManagement.Models
 {
     /// <summary>
     /// Representa um arquivo estruturado com dados adicionais, como variáveis substituíveis e tabelas.

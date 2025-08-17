@@ -1,4 +1,4 @@
-﻿namespace CraqForge.Core.FileManagement.Results
+﻿namespace CraqForge.Core.Abstractions.FileManagement.Results
 {
     /// <summary>
     /// Representa as informações básicas extraídas de um documento genérico.
