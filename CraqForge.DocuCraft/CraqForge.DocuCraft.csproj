@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>CraqForge.DocuCraft</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Thiago Gabriel Moreira Freitas</Authors>
 		<Company>CraqForge</Company>
 		<PackageDescription>Document processing utilities for the CraqForge ecosystem, including PDF content extraction and analysis.</PackageDescription>
@@ -15,23 +15,22 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DocX" Version="4.0.25105.5786" />
-		<PackageReference Include="Emgu.CV" Version="4.11.0.5746" />
-		<PackageReference Include="Emgu.CV.Bitmap" Version="4.11.0.5746" />
+		<PackageReference Include="Emgu.CV" Version="4.12.0.5764" />
+		<PackageReference Include="Emgu.CV.Bitmap" Version="4.12.0.5764" />
 		<!-- Condicional para Emgu.CV dependendo do SO -->
-		<PackageReference Include="Emgu.CV.runtime.windows" Version="4.11.0.5746" Condition="'$(OS)' == 'Windows_NT'" />
+		<PackageReference Include="Emgu.CV.runtime.windows" Version="4.12.0.5764" Condition="'$(OS)' == 'Windows_NT'" />
 		<PackageReference Include="Emgu.CV.runtime.linux" Version="4.10.0.5680" Condition="'$(OS)' == 'Linux'" />
 
-		<PackageReference Include="DocX" Version="4.0.25105.5786" />
-		<PackageReference Include="itext.bouncy-castle-adapter" Version="9.2.0" />
-		<PackageReference Include="itext.commons" Version="9.2.0" />
-		<PackageReference Include="itext7" Version="9.2.0" />
-		<PackageReference Include="itext7.bouncy-castle-adapter" Version="9.2.0" />
+		<PackageReference Include="DocX" Version="5.0.0" />
+		<PackageReference Include="itext.bouncy-castle-adapter" Version="9.4.0" />
+		<PackageReference Include="itext.commons" Version="9.4.0" />
+		<PackageReference Include="itext7" Version="9.4.0" />
+		<PackageReference Include="itext7.bouncy-castle-adapter" Version="9.4.0" />
 		<PackageReference Include="MigraDocCore.Rendering" Version="1.3.67" />
-		<PackageReference Include="PDFsharp-MigraDoc" Version="6.2.1" />
-		<PackageReference Include="PuppeteerSharp" Version="20.2.2" />
-		<PackageReference Include="PDFtoImage" Version="5.1.1" />
-		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.11" />
+		<PackageReference Include="PDFsharp-MigraDoc" Version="6.2.3" />
+		<PackageReference Include="PuppeteerSharp" Version="20.2.5" />
+		<PackageReference Include="PDFtoImage" Version="5.2.0" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
 
 		<!-- Condicional para System.Drawing.Common -->
 		<!--<PackageReference Include="System.Drawing.Common" Version="9.0.4" Condition="'$(OS)' == 'Windows_NT'" />

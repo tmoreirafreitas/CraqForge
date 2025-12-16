@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageId>CraqForge.DocuCraft.Abstractions</PackageId>
-		<Version>1.0.0</Version>
+		<PackageId>CraqForge.Core.Abstractions</PackageId>
+		<Version>1.0.1</Version>
 		<Authors>Thiago Gabriel Moreira Freitas</Authors>
 		<Company>CraqForge</Company>
-		<PackageDescription>Common interfaces and contracts for document processing in the CraqForge ecosystem.</PackageDescription>
+		<PackageDescription>Common interfaces and contracts for document processed in the CraqForge ecosystem.</PackageDescription>
 		<PackageTags>craqforge;documents;abstractions;contracts;docucraft;pdf;interfaces</PackageTags>
 		<RepositoryUrl>https://github.com/tmoreirafreitas/CraqForge</RepositoryUrl>
 	</PropertyGroup>
