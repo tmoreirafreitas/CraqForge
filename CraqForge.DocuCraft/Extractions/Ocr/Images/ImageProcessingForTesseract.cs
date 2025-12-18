@@ -83,8 +83,6 @@ namespace CraqForge.DocuCraft.Extractions.Ocr.Images
             {
                 x.GaussianBlur(2f)
                 .BinaryThreshold(0.45f);
-                //.Normalize()
-                //.BinaryThreshold(0.45f);
             });
         }
 

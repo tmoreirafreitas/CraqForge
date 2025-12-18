@@ -6,10 +6,10 @@
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>CraqForge.DocuCraft.Abstractions</PackageId>
-		<Version>1.0.1</Version>
+		<Version>1.0.3</Version>
 		<Authors>Thiago Gabriel Moreira Freitas</Authors>
 		<Company>CraqForge</Company>
-		<PackageDescription>Common interfaces and contracts for document processing in the CraqForge ecosystem.</PackageDescription>
+		<PackageDescription>Interfaces e contratos comuns para processamento de documentos no ecossistema CraqForge.</PackageDescription>
 		<PackageTags>craqforge;documents;abstractions;contracts;docucraft;pdf;interfaces</PackageTags>
 		<RepositoryUrl>https://github.com/tmoreirafreitas/CraqForge</RepositoryUrl>
 	</PropertyGroup>
